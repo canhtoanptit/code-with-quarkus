@@ -3,6 +3,7 @@ package org.acme;
 import io.quarkus.hibernate.reactive.panache.Panache;
 import io.quarkus.panache.common.Sort;
 import io.smallrye.mutiny.Uni;
+import jakarta.annotation.security.RolesAllowed;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.POST;
@@ -15,6 +16,7 @@ import java.util.List;
 
 @Path("/fruits")
 @ApplicationScoped
+@RolesAllowed("admin")
 public class FruitResource {
 
     @GET
