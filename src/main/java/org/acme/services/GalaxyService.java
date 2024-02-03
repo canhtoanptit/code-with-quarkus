@@ -2,6 +2,7 @@ package org.acme.services;
 
 import jakarta.enterprise.context.ApplicationScoped;
 import org.acme.constants.LightSaber;
+import org.acme.domain.Ally;
 import org.acme.domain.Film;
 import org.acme.domain.Hero;
 
@@ -17,6 +18,8 @@ public class GalaxyService {
     private List<Hero> heroes = new ArrayList<>();
 
     private List<Film> films = new ArrayList<>();
+
+    private List<Ally> allies = new ArrayList<>();
 
     public GalaxyService() {
 
@@ -73,6 +76,11 @@ public class GalaxyService {
         heroes.add(leia);
         heroes.add(vader);
 
+        Ally jarjar = new Ally();
+        jarjar.name = "Jar Jar";
+        jarjar.surname = "Binks";
+        allies.add(jarjar);
+
     }
 
     public List<Film> getAllFilms() {
@@ -101,5 +109,9 @@ public class GalaxyService {
         return heroes.stream()
                 .filter(hero -> hero.surname.equals(surname))
                 .collect(Collectors.toList());
+    }
+
+    public List<Ally> getAllAllies() {
+        return allies;
     }
 }

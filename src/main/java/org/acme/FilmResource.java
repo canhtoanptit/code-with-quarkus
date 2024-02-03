@@ -1,5 +1,7 @@
 package org.acme;
 
+import io.smallrye.common.annotation.NonBlocking;
+import org.acme.domain.Ally;
 import org.acme.domain.Film;
 import org.acme.domain.Hero;
 import org.acme.services.GalaxyService;
@@ -24,6 +26,7 @@ public class FilmResource {
 
     @Query
     @Description("Get a Films from a galaxy far far away")
+    @NonBlocking
     public Film getFilm(@Name("filmID") int id) {
         return galaxyService.getFilm(id);
     }
@@ -32,5 +35,11 @@ public class FilmResource {
     @Description("Get heroes by film")
     public List<Hero> heroes(@Source Film film) {
         return galaxyService.getHeroesByFilm(film);
+    }
+
+    @Query
+    @Description("Get all allies")
+    public List<Ally> allies() {
+        return galaxyService.getAllAllies();
     }
 }
